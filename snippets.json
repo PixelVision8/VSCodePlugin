@@ -1,0 +1,898 @@
+{
+	"AddScript": {
+		"prefix": "AddScript",
+		"body": ["AddScript( ${1:name}, ${2:text} )$3"],
+		"description": "The AddScript() API allows you to add a new Lua script at runtime from a string. Simply give the script a name and pass in a string with valid Lua code. If a script with the same name exists, it will be overwritten.",
+		"rightLabel": "PV8 File IO"
+	},
+	"LoadScript": {
+		"prefix": "LoadScript",
+		"body": ["LoadScript( ${1:name} )$2"],
+		"description": "The LoadScript() API allows you to parse a new Lua script at runtime from memory. You can use the AddScript() API to manually load text into memory or add additional Lua files to your game project. Also, any Lua files located in a System/Libs/ folder, whether at the root of the Workspace drive or on a disk, will be available to load.",
+		"rightLabel": "PV8 File IO"
+	},
+	"BackgroundColor": {
+		"prefix": "BackgroundColor",
+		"body": ["BackgroundColor( ${1:id} )$2"],
+		"description": "The background color is used to fill the screen when clearing the display. You can use this method to read or update the background color at runtime. When calling BackgroundColor() without an argument, it returns the current background color as an int. You can pass in an optional int to update the background color by calling BackgroundColor(0), where 0 is any valid system color ID.",
+		"rightLabel": "PV8 Colors"
+	},
+	"Button": {
+		"prefix": "Button",
+		"body": ["Button( ${1:Buttons}, ${2:InputState}, ${3:controllerID} )$4"],
+		"description": "The main form of input for Pixel Vision 8 is the controller's buttons. You can get the current state of any button by calling the Button() method and supplying a button ID. There are optional parameters for specifying an InputState and the controller ID.",
+		"rightLabel": "PV8 Input"
+	},
+	"CalculateDistance": {
+		"prefix": "CalculateDistance",
+		"body": ["CalculateDistance( ${1:x0}, ${2:y0}, ${3:x1}, ${4:y1} )$5"],
+		"description": "Fast calculation to get the distance between two points.",
+		"rightLabel": "PV8 Math"
+	},
+	"CalculateIndex": {
+		"prefix": "CalculateIndex",
+		"body": ["CalculateIndex( ${1:x}, ${2:y}, ${3:width} )$4"],
+		"description": "Converts an X and Y position into an index. This is useful for finding positions in 1D arrays that represent 2D data.",
+		"rightLabel": "PV8 Math"
+	},
+	"CalculatePosition": {
+		"prefix": "CalculatePosition",
+		"body": ["CalculatePosition( ${1:index}, ${2:width} )$3"],
+		"description": "Converts an index into an X and Y position to help when working with 1D arrays that represent 2D data.",
+		"rightLabel": "PV8 Math"
+	},
+	"Clamp": {
+		"prefix": "Clamp",
+		"body": ["Clamp( ${1:val}, ${2:min}, ${3:max} )$4"],
+		"description": "The Clamp() API limits a value between a minimum and maximum integer.",
+		"rightLabel": "PV8 Math"
+	},
+	"Clear": {
+		"prefix": "Clear",
+		"body": ["Clear( ${1:x}, ${2:y}, ${3:width}, ${4:height} )$5"],
+		"description": "Clearing the display removes all of the existing pixel data, replacing it with the default background color. By calling Clear(), with no arguments, it automatically clears the entire display. You can manually define an area of the screen to clear by supplying optional x, y, width, and height argument values.",
+		"rightLabel": "PV8 Rendering"
+	},
+	"Color": {
+		"prefix": "Color",
+		"body": ["Color( ${1:id}, ${2:value} )$3"],
+		"description": "The Color() API allows you to read and update color values in the ColorChip. This API has two modes that require a color ID to work. By calling the method with just an ID, like Color(0), it returns a HEX string for that color. If you supply an additional HEX string value, like Color(0, \"#FFFF00\"), you can change the color with the given ID.",
+		"rightLabel": "PV8 Colors"
+	},
+	"ColorsPerSprite": {
+		"prefix": "ColorsPerSprite",
+		"body": ["ColorsPerSprite()$1"],
+		"description": "Pixel Vision 8 sprites have limits around how many colors they can display at once. This is called CPS which stands for Colors Per Sprite. The ColorsPerSprite() API returns this value from the SpriteChip.",
+		"rightLabel": "PV8 Colors"
+	},
+	"CharacterToPixelData": {
+		"prefix": "CharacterToPixelData",
+		"body": ["CharacterToPixelData( ${1:character}, ${2:fontName} )$3"],
+		"description": "The CharacterToPixelData() API converts a single font character into raw pixel data.",
+		"rightLabel": "PV8 Texts"
+	},
+	"ReplaceColor": {
+		"prefix": "ReplaceColor",
+		"body": ["ReplaceColor( ${1:destID}, ${2:srcID} )$3"],
+		"description": "The ReplaceColor() API allows you to quickly replace a color with another color ID. ",
+		"rightLabel": "PV8 Colors"
+	},
+	"Display": {
+		"prefix": "Display",
+		"body": ["Display( ${1:visible} )$2"],
+		"description": "The Display() method allows you to get the resolution of the display at run time. By default, this will return the visible screen area based on the overscan value set on the DisplayChip.",
+		"rightLabel": "PV8 Rendering"
+	},
+	"Init": {
+		"prefix": "Init",
+		"body": ["Init()$1"],
+		"description": "Init() is called when a game first loads up. This is where you should store configuration and inialize any variables you may need later on in the Update() and Draw() calls.",
+		"type": "function",
+		"rightLabel": "PV8 Lifecycle"
+	},
+	"Draw": {
+		"prefix": "Draw",
+		"body": ["Draw()$1"],
+		"description": "Draw() is called once per frame after the Update() has been completed. This is where all of your game's draw calls should take place such as clearing the display, drawing sprites, and pushing raw pixel data into the display.",
+		"type": "function",
+		"rightLabel": "PV8 Lifecycle"
+	},
+	"DrawPixels": {
+		"prefix": "DrawPixels",
+		"body": ["DrawPixels( ${1:pixelData}, ${2:x}, ${3:y}, ${4:width}, ${5:height}, ${6:flipH}, ${7:flipV}, ${8:DrawMode}, ${9:colorOffset} )$10"],
+		"description": "The DrawPixels() API allows you to push raw pixel data directly to the display. While DrawPixels() is used under the hood by all of the drawing APIs, you lose some performance by calling it directly, especially in Lua. Since this bypasses the sprite counter, there is no limit to the number of draw calls you can make to any of the sprite layers.",
+		"rightLabel": "PV8 Drawing"
+	},
+	"DrawRect": {
+		"prefix": "DrawRect",
+		"body": ["DrawRect( ${1:x}, ${2:y}, ${3:width}, ${4:height}, ${5:color}, ${6:DrawMode} )$7"],
+		"description": "The DrawRect() API allows you to display a rectangle with a fill color on the screen. Since this API uses DrawPixels(), rectangles can be drawn to the tilemap cache or sprite layers.",
+		"rightLabel": "PV8 Drawing"
+	},
+	"DrawSprite": {
+		"prefix": "DrawSprite",
+		"body": ["DrawSprite( ${1:id}, ${2:x}, ${3:y}, ${4:flipH}, ${5:flipV}, ${6:DrawMode}, ${7:colorOffset} )$8"],
+		"description": "The DrawSprite() API allows you to draw a single sprite to the display. Sprites represent individual collections of 8 x 8 blocks of pixel data. The display also has a limitation on how many sprites that can be on the screen at the same time. Each time you call DrawSprite(), the sprite counts against the total amount the display can render.",
+		"rightLabel": "PV8 Drawing"
+	},
+	"DrawSpriteBlock": {
+		"prefix": "DrawSpriteBlock",
+		"body": ["DrawSpriteBlock( ${1:id}, ${2:x}, ${3:y}, ${4:width}, ${5:height}, ${6:flipH}, ${7:flipV}, ${8:DrawMode}, ${9:colorOffset}, ${10:onScreen}, ${11:useScrollPos}, ${12:bounds} )$13"],
+		"description": "DrawSpriteBlock() is similar to DrawSprites except you define the first sprite (upper left corner) and the width x height (in sprites) to sample from sprite ram.",
+		"rightLabel": "PV8 Drawing"
+	},
+	"DrawSprites": {
+		"prefix": "DrawSprites",
+		"body": ["DrawSprites( ${1:ids}, ${2:x}, ${3:y}, ${4:width}, ${5:flipH}, ${6:flipV}, ${7:DrawMode}, ${8:colorOffset}, ${9:onScreen}, ${10:useScrollPos}, ${11:bounds} )$12"],
+		"description": "The DrawSprites() API makes it easier to draw a group of sprites to the display. Unlike the DrawSpriteBlock() API, you define the exact sprites you want to be drawn. While there is no limit on the size of the sprite group which can be rendered, it is important to note that each ID in the array still counts as an individual sprite.",
+		"rightLabel": "PV8 Drawing"
+	},
+	"DrawText": {
+		"prefix": "DrawText",
+		"body": ["DrawText( ${1:text}, ${2:x}, ${3:y}, ${4:DrawMode}, ${5:font}, ${6:colorOffset}, ${7:spacing} )$8"],
+		"description": "The DrawText() API allows you to render text to the display. Files ending with the .font.png extension are loaded by the TextChip and converted into character sprites. The TextChip stores these characters separately from SpriteChip’s own sprites.",
+		"rightLabel": "PV8 Drawing"
+	},
+	"DrawTilemap": {
+		"prefix": "DrawTilemap",
+		"body": ["DrawTilemap( ${1:x}, ${2:y}, ${3:columns}, ${4:rows}, ${5:offsetX}, ${6:offsetY}, ${7:drawMode} )$8"],
+		"description": " By default, the tilemap renders to the display by simply calling DrawTilemap(). This automatically fills the entire display with the visible portion of the tilemap. To have more granular control over how to render the tilemap, you can supply an optional X and Y position to change where it draws on the screen. You can also modify the width (columns) and height (rows) that are displayed too. This is useful if you want to show a HUD or some other kind of image on the screen that is not overridden by the tilemap. To scroll the tilemap, you need to call the ScrollPosition() and supply a new scroll X and Y value. ",
+		"rightLabel": "PV8 Drawing"
+	},
+	"Flag": {
+		"prefix": "Flag",
+		"body": ["Flag( ${1:column}, ${2:row}, ${3:value} )$4"],
+		"description": "The Flag() API allows you to quickly access just the flag value of a tile. This is useful when trying to calculate collision on the tilemap. By default, you can call this method with just a column and row position to return the flag value at that tile. If you supply a new value, it will be overridden on the tile.",
+		"rightLabel": "PV8 Tilemap"
+	},
+	"InputString": {
+		"prefix": "InputString",
+		"body": ["InputString()$1"],
+		"description": "The InputString() API returns the keyboard input from the current frame. This API is useful for capturing keyboard text input.",
+		"rightLabel": "PV8 Input"
+	},
+	"IsChannelPlaying": {
+		"prefix": "IsChannelPlaying",
+		"body": ["IsChannelPlaying( ${1:channel} )$2"],
+		"description": "Returns a bool if the specified audio channel is playing a sound. Since channels can only play one sound effect at a time, you may need to test if a channel is currently playing before playing a new sound effect.",
+		"rightLabel": "PV8 Sounds"
+	},
+	"Key": {
+		"prefix": "Key",
+		"body": ["Key( ${1:Keys}, ${2:InputState} )$3"],
+		"description": "While the main forms of input for Pixel Vision 8 are the controllers, you can test for keyboard input by calling the Key() API. When this API is called, it returns the current state of that specific key.",
+		"rightLabel": "PV8 Input"
+	},
+	"MaxSpriteCount": {
+		"prefix": "MaxSpriteCount",
+		"body": ["MaxSpriteCount( ${1:total} )$2"],
+		"description": " This method returns the maximum number of sprites the Display Chip can render in a single frame. Use this to better understand the limitations of the hardware your game is running on. This is a read only property at runtime. ",
+		"rightLabel": "PV8 Sprites"
+	},
+	"MouseButton": {
+		"prefix": "MouseButton",
+		"body": ["MouseButton( ${1:button}, ${2:InputState} )$3"],
+		"description": "Pixel Vision 8 supports mouse input. You can get the current state of the mouse's left (0) and right (1) buttons by calling MouseButton()API. In addition to supplying a button ID, you can also provide an option InputState.",
+		"rightLabel": "PV8 Input"
+	},
+	"MousePosition": {
+		"prefix": "MousePosition",
+		"body": ["MousePosition()$1"],
+		"description": "The MousePosition() API returns a Point for the mouse cursor's X and Y position. The mouse's 0,0 position is in the upper left-hand corner of the display and when the mouse is off-screen it will return -1. This value is read-only.",
+		"rightLabel": "PV8 Input"
+	},
+	"NewPoint": {
+		"prefix": "NewPoint",
+		"body": ["NewPoint( ${1:x}, ${2:y} )$3"],
+		"description": "A Point is a Pixel Vision 8 primitive used for defining an X and Y position on the display. The NewPoint() API creates a new instance for you. It’s important to keep in mind that point only stores integers for the X and Y value.",
+		"rightLabel": "PV8 Geometry"
+	},
+	"NewRect": {
+		"prefix": "NewRect",
+		"body": ["NewRect( ${1:x}, ${2:y}, ${3:w}, ${4:h} )$5"],
+		"description": "A Rectangle is a Pixel Vision 8 primitive used for defining the bounds of an object on the display. It contains an X, W, Width and Height property. The Rectangle object class also has some additional methods to aid with collision detection.",
+		"rightLabel": "PV8 Geometry"
+	},
+	"NewCanvas": {
+		"prefix": "NewCanvas",
+		"body": ["NewCanvas( ${1:w}, ${2:h} )$3"],
+		"description": "The canvas is a special TextureData derivative that supports drawing primitive shapes such as lines, circles, and rectangles. You can also draw sprites and text to it as well. When you are done drawing on the canvas, you can copy the pixel data into the SpriteChip or directly to the tilemap cache. While the canvas allows run-time drawing, it’s not part of the core Pixel Vision 8 API.",
+		"rightLabel": "PV8 Geometry"
+	},
+	"PaletteOffset": {
+		"prefix": "PaletteOffset",
+		"body": ["PaletteOffset( ${1:value}, ${2:paletteColorID} )$3"],
+		"description": "By calling the PaletteOffset() API, it will convert a palette ID into the correct color ID for you. When used in the place of any of the drawing API’s colorOffset arguments, you can easily shift between any of the 8 palettes during run-time. There is an optional argument to supply a paletteColorID which gives you the color ID for a specific position inside of the palette.",
+		"rightLabel": "PV8 Colors"
+	},
+	"PauseSong": {
+		"prefix": "PauseSong",
+		"body": ["PauseSong()$1"],
+		"description": "The PauseSong() API toggles the current playback state of the sequencer. If the song is playing, it will pause. If the song is paused, it will play.",
+		"rightLabel": "PV8 Music"
+	},
+	"PlaySong": {
+		"prefix": "PlaySong",
+		"body": ["PlaySong( ${1:id}, ${2:loop}, ${3:startAt} )$4"],
+		"description": "The PlaySong() API allows you to activate the MusicChip’s tracker to playback any of the songs stored in memory. A song is simply a collection of patterns. You can supply an optional parameter called startAt to tell the MusicChip which pattern to start the song at.",
+		"rightLabel": "PV8 Music"
+	},
+	"PlaySound": {
+		"prefix": "PlaySound",
+		"body": ["PlaySound( ${1:id}, ${2:channel} )$3"],
+		"description": "The PlaySound() API allows playing a single sound effect on a specific channel. The SoundChip has a limited number of active channels, so playing a sound effect on a channel where a sound is already playing will override it.",
+		"rightLabel": "PV8 Sounds"
+	},
+	"WriteMetadata": {
+		"prefix": "WriteMetadata",
+		"body": ["WriteMetadata( ${1:key}, ${2:value} )$3"],
+		"description": "The WriteMetadata() API allows you to modify or add new values to the game’s metadata which can be read when the game reloads. Values written to the Metadata will be erased when the game closes and a new game is loaded in its place.",
+		"rightLabel": "PV8 File IO"
+	},
+	"ReadMetadata": {
+		"prefix": "ReadMetadata",
+		"body": ["ReadMetadata( ${1:key}, ${2:defaultValue} )$3"],
+		"description": "The ReadMetadata() API allows you to read the metadata that is passed into the game when it loads. This is used by the Pixel Vision 8 Runner to pass data between load sessions.",
+		"rightLabel": "PV8 File IO"
+	},
+	"ReadSaveData": {
+		"prefix": "ReadSaveData",
+		"body": ["ReadSaveData( ${1:key}, ${2:defaultValue} )$3"],
+		"description": "The ReadSaveData() API allows you to read saved data by supplying a key. If no matching key exists, \"undefined\" is returned.",
+		"rightLabel": "PV8 File IO"
+	},
+	"RebuildTilemap": {
+		"prefix": "RebuildTilemap",
+		"body": ["RebuildTilemap()$1"],
+		"description": "The RebuildTilemap() API forces the tilemap to redraw the tilemap cache layer. Use this to clear any pixel data drawn on top of tiles in the tilemap cache layer.",
+		"rightLabel": "PV8 Tilemap"
+	},
+	"RedrawDisplay": {
+		"prefix": "RedrawDisplay",
+		"body": ["RedrawDisplay()$1"],
+		"description": "The RedrawAPI() allows you to execute both the Clear() and DrawTilemap() APIs in a single call. This is a simple helper function to make redrawing the display easier. If you need to supply additional arguments to either the Clear() or DrawTilemap() APIs, then you’ll need to call each one independently without using RedrawDisplay().",
+		"rightLabel": "PV8 Rendering"
+	},
+	"Repeat": {
+		"prefix": "Repeat",
+		"body": ["Repeat( ${1:val}, ${2:max} )$3"],
+		"description": "The Repeat() API allows you to reset the value of a number if it goes past a maximum value. When counting backward, Repeat() will set the value to the maximum when below 0.",
+		"rightLabel": "PV8 Math"
+	},
+	"Reset": {
+		"prefix": "Reset",
+		"body": ["Reset()$1"],
+		"description": "Reset() is called when a game is restarted. This is called instead of reloading the entire game. It allows you to perform additional configuration that should happen if the Init() method is not called.",
+		"type": "function",
+		"rightLabel": "PV8 Lifecycle"
+	},
+	"RewindSong": {
+		"prefix": "RewindSong",
+		"body": ["RewindSong( ${1:position}, ${2:loopID} )$3"],
+		"description": "The RewindSong() API allows you rewind the currently playing song to a specific position and pattern ID. Calling this API without any arguments will simply rewind the song to the beginning of the first pattern.",
+		"rightLabel": "PV8 Music"
+	},
+	"ScrollPosition": {
+		"prefix": "ScrollPosition",
+		"body": ["ScrollPosition( ${1:x}, ${2:y} )$3"],
+		"description": "You can scroll the tilemap by calling the ScrollPosition() API and supplying a new scroll X and Y position. By default, calling ScrollPosition() with no arguments returns a Point with the current scroll X and Y values. If you supply an X and Y value, it updates the tilemap's scroll position the next time you call the DrawTilemap() API.",
+		"rightLabel": "PV8 Rendering"
+	},
+	"Shutdown": {
+		"prefix": "Shutdown",
+		"body": ["Shutdown()$1"],
+		"description": "Shutdown() is called when quitting a game or shutting down the Runner/Game Creator. This hook allows you to perform any last minute changes to the game's data such as saving or removing any temp files that will not be needed.",
+		"rightLabel": "PV8 Lifecycle"
+	},
+	"SongData": {
+		"prefix": "SongData",
+		"body": ["SongData()$1"],
+		"description": " Returns a dictionary with information about the current state of the music chip. ",
+		"rightLabel": "PV8 Music"
+	},
+	"Sound": {
+		"prefix": "Sound",
+		"body": ["Sound( ${1:id}, ${2:data} )$3"],
+		"description": "The Sound() API allows you to read raw sound data from the SoundChip. You need to provide a sound effect ID. If you supply the optional data argument, which is a comma-delimited string of sound effect property values, you’ll be able to update the sound effect.",
+		"rightLabel": "PV8 Sounds"
+	},
+	"SplitLines": {
+		"prefix": "SplitLines",
+		"body": ["SplitLines( ${1:str} )$2"],
+		"description": " This calls the TextUtil's SplitLines() helper to convert text with line breaks (\\n) into a collection of lines. This can be used in conjunction with the WordWrap() helper to render large blocks of text line by line with the DrawText() API. ",
+		"rightLabel": "PV8 Text"
+	},
+	"Sprite": {
+		"prefix": "Sprite",
+		"body": ["Sprite( ${1:id}, ${2:data} )$3"],
+		"description": "The Sprite() API allows you to read and write pixel data directly to the SpriteChip’s memory. Sprite pixel data is simply an array of color IDs. When calling the Sprite() with only an ID argument, you will get the sprite's pixel data. If you supply data, it will overwrite the sprite.",
+		"rightLabel": "PV8 Sprites"
+	},
+	"SpriteSize": {
+		"prefix": "SpriteSize",
+		"body": ["SpriteSize( ${1:width}, ${2:height} )$3"],
+		"description":" Returns the size of the sprite as a Vector where X and Y represent the width and height.",
+		"rightLabel": "PV8 Sprites"
+	},
+	"StopSong": {
+		"prefix": "StopSong",
+		"body": ["StopSong()$1"],
+		"description": "The StopSong() API will stop the currently playing song.",
+		"rightLabel": "PV8 Music"
+	},
+	"StopSound": {
+		"prefix": "StopSound",
+		"body": ["StopSound( ${1:channel} )$2"],
+		"description": "Use StopSound() to stop any sound playing on a specific channel.",
+		"rightLabel": "PV8 Sounds"
+	},
+	"Tile": {
+		"prefix": "Tile",
+		"body": ["Tile( ${1:column}, ${2:row}, ${3:spriteID}, ${4:colorOffset}, ${5:flag}, ${6:flipH}, ${7:flipV} )$8"],
+		"description": "The Tile() API allows you to get the current sprite, color offset and flag values associated with a given tile ID. You can optionally supply your own values if you want to update the tile. ",
+		"rightLabel": "PV8 Tilemap"
+	},
+	"TilemapSize": {
+		"prefix": "TilemapSize",
+		"body": ["TilemapSize( ${1:width}, ${2:height}, ${3:clear} )$4"],
+		"description": "The TilemapSize() API returns a Point representing the size of the tilemap in columns (X) and rows (Y). To find the size in pixels, you will need to multiply the returned Point’s X and Y values by the sprite size's X and Y. This method also allows you to resize the tilemap by passing in an optional new Width and Height.",
+		"rightLabel": "PV8 Tilemap"
+	},
+	"TotalColors": {
+		"prefix": "TotalColors",
+		"body": ["TotalColors( ${1:ignoreEmpty} )$2"],
+		"description": " The TotalColors() method simply returns the total number of colors in the ColorsChip. By default, it returns only colors that have been set to value other than magenta (#FF00FF) which is the default transparent value used by the engine. By calling TotalColors(false), it returns the total available color slots in the ColorsChip. ",
+		"rightLabel": "PV8 Colors"
+	},
+	"TotalSprites": {
+		"prefix": "TotalSprites",
+		"body": ["TotalSprites( ${1:ignoreEmpty} )$2"],
+		"description": "The TotalSprites() API returns the total number of sprites in the SpriteChip. By supplying true for the ignoreEmpty parameter, it will only return sprites that contain pixel data.",
+		"rightLabel": "PV8 Sprites"
+	},
+	"Update": {
+		"prefix": "Update",
+		"body": ["Update( timeDelta )$0"],
+		"description": "Update() is called once per frame at the beginning of the game loop. This is where you should put all non-visual game logic such as character position calculations, detecting input and performing updates to your animation system. The timeDelta is provided on each frame so you can calculate the difference in milliseconds since the last render took place.",
+		"type": "function",
+		"rightLabel": "PV8 Lifecycle"
+	},
+	"UpdateTiles": {
+		"prefix": "UpdateTiles",
+		"body": ["UpdateTiles( ${1:ids}, ${2:column}, ${3:row}, ${4:columns},  ${5:colorOffset}, ${6:flag} )$7"],
+		"description": "The UpdateTiles() API allows you to update the color offset and flag values of multiple tiles at once. Simply supply an array of tile IDs and the new tile’s color offset and a flag value. This helper method uses the Tile() API under the hood to update each tile, so any changes to a tile’s color offset will automatically force it to be redrawn to the tilemap cache layer.",
+		"rightLabel": "PV8 Tilemap"
+	},
+	"WordWrap": {
+		"prefix": "WordWrap",
+		"body": ["WordWrap( ${1:text}, ${2:width} )$3"],
+		"description": "The WordWrap() API allows you to wrap a string of text to a specified character width. It will automatically insert new line breaks (\n) to keep each line of text within the specified width. This can be used in conjunction with the SplitLines() API to render large blocks of text to the display line by line within a specific character width.",
+		"rightLabel": "PV8 Text"
+	},
+	"WriteSaveData": {
+		"prefix": "WriteSaveData",
+		"body": ["WriteSaveData( ${1:key}, ${2:value} )$3"],
+		"description": "The WriteSaveData() API allows you to write saved data by supplying a key and value. Once saved, this data persists even after restarting a game.",
+		"rightLabel": "PV8 File IO"
+	},
+	"DrawMode.TilemapCache": {
+		"prefix": "DrawMode.TilemapCache",
+		"body": ["DrawMode.TilemapCache"],
+		"description": "Draws pixel data to the tilemap cache layer.",
+		"rightLabel": "PV8 Draw Mode"
+	},
+	"DrawMode.SpriteBelow": {
+		"prefix": "DrawMode.SpriteBelow",
+		"body": ["DrawMode.SpriteBelow"],
+		"description": "This is a layer dedicated to sprites just above the background.",
+		"rightLabel": "PV8 Draw Mode"
+	},
+	"DrawMode.Tile": {
+		"prefix": "DrawMode.Tile",
+		"body": ["DrawMode.Tile"],
+		"description": "This is the tilemap layer and is drawn above the SpriteBelow layer allowing sprites to appear behind the background.",
+		"rightLabel": "PV8 Draw Mode"
+	},
+	"DrawMode.Sprite": {
+		"prefix": "DrawMode.Sprite",
+		"body": ["DrawMode.Sprite"],
+		"description": "This is the default layer for sprites to be rendered at. It is above the background.",
+		"rightLabel": "PV8 Draw Mode"
+	},
+	"DrawMode.UI": {
+		"prefix": "DrawMode.UI",
+		"body": ["DrawMode.UI"],
+		"description": "This is a special layer which can be used to draw raw pixel data above the background and sprites. It's designed for HUDs in your game and other graphics that do not scroll with the tilemap.",
+		"rightLabel": "PV8 Draw Mode"
+	},
+	"DrawMode.SpriteAbove": {
+		"prefix": "DrawMode.SpriteAbove",
+		"body": ["DrawMode.SpriteAbove"],
+		"description": "This layer allows sprites to render above the UI layer. It is useful for mouse cursors or other graphics that need to be on top of all other layers.",
+		"rightLabel": "PV8 Draw Mode"
+	},
+	"InputState.Down": {
+		"prefix": "InputState.Down",
+		"body": ["InputState.Down"],
+		"description": "Determins if the input is currently down.",
+		"rightLabel": "PV8 Input State"
+	},
+	"InputState.Released": {
+		"prefix": "InputState.Released",
+		"body": ["InputState.Released"],
+		"description": "Determins if the input is currently up but was down in the previous frame.",
+		"rightLabel": "PV8 Input State"
+	},
+	"Buttons.Up": {
+		"prefix": "Buttons.Up",
+		"body": ["Buttons.Up"],
+		"description": "This represents the Up button on the controller."
+	},
+	"Buttons.Down": {
+		"prefix": "Buttons.Down",
+		"body": ["Buttons.Down"],
+		"description": "This represents the Down button on the controller."
+	},
+	"Buttons.Left": {
+		"prefix": "Buttons.Left",
+		"body": ["Buttons.Left"],
+		"description": "This represents the Left button on the controller."
+	},
+	"Buttons.Right": {
+		"prefix": "Buttons.Right",
+		"body": ["Buttons.Right"],
+		"description": "This represents the Right button on the controller."
+	},
+	"Buttons.A": {
+		"prefix": "Buttons.A",
+		"body": ["Buttons.A"],
+		"description": "This represents the A button on the controller."
+	},
+	"Buttons.B": {
+		"prefix": "Buttons.B",
+		"body": ["Buttons.B"],
+		"description": "This represents the B button on the controller."
+	},
+	"Buttons.Select": {
+		"prefix": "Buttons.Select",
+		"body": ["Buttons.Select"],
+		"description": "This represents the Select button on the controller."
+	},
+	"Buttons.Start": {
+		"prefix": "Buttons.Start",
+		"body": ["Buttons.Start"],
+		"description": "This represents the Start button on the controller."
+	},
+	"Keys.Backspace": {
+		"prefix": "Keys.Backspace",
+		"body": ["Keys.Backspace"],
+		"description": "Represents the keyboard's 'Backspace' key (8)."
+	},
+	"Keys.Tab": {
+		"prefix": "Keys.Tab",
+		"body": ["Keys.Tab"],
+		"description": "Represents the keyboard's 'Tab' key (9)."
+	},
+	"Keys.Enter": {
+		"prefix": "Keys.Enter",
+		"body": ["Keys.Enter"],
+		"description": "Represents the keyboard's 'Enter' key (13)."
+	},
+	"Keys.Escape": {
+		"prefix": "Keys.Escape",
+		"body": ["Keys.Escape"],
+		"description": "Represents the keyboard's 'Escape' key (27)."
+	},
+	"Keys.Space": {
+		"prefix": "Keys.Space",
+		"body": ["Keys.Space"],
+		"description": "Represents the keyboard's 'Space' key (32)."
+	},
+	"Keys.PageUp": {
+		"prefix": "Keys.PageUp",
+		"body": ["Keys.PageUp"],
+		"description": "Represents the keyboard's 'Page Up' key (33)."
+	},
+	"Keys.PageDown": {
+		"prefix": "Keys.PageDown",
+		"body": ["Keys.PageDown"],
+		"description": "Represents the keyboard's 'Page Down' key (34)."
+	},
+	"Keys.End": {
+		"prefix": "Keys.End",
+		"body": ["Keys.End"],
+		"description": "Represents the keyboard's 'End' key (35)."
+	},
+	"Keys.Home": {
+		"prefix": "Keys.Home",
+		"body": ["Keys.Home"],
+		"description": "Represents the keyboard's 'Home' key (36)."
+	},
+	"Keys.Left": {
+		"prefix": "Keys.Left",
+		"body": ["Keys.Left"],
+		"description": "Represents the keyboard's 'Left' arrow key (37)."
+	},
+	"Keys.Up": {
+		"prefix": "Keys.Up",
+		"body": ["Keys.Up"],
+		"description": "Represents the keyboard's 'Up' arrow key (38)."
+	},
+	"Keys.Right": {
+		"prefix": "Keys.Right",
+		"body": ["Keys.Right"],
+		"description": "Represents the keyboard's 'Right' arrow key (39)."
+	},
+	"Keys.Down": {
+		"prefix": "Keys.Down",
+		"body": ["Keys.Down"],
+		"description": "Represents the keyboard's 'Down' arrow key (40)."
+	},
+	"Keys.Insert": {
+		"prefix": "Keys.Insert",
+		"body": ["Keys.Insert"],
+		"description": "Represents the keyboard's 'Insert' key (45)."
+	},
+	"Keys.Delete": {
+		"prefix": "Keys.Delete",
+		"body": ["Keys.Delete"],
+		"description": "Represents the keyboard's 'Delete' key (46)."
+	},
+	"Keys.Alpha0": {
+		"prefix": "Keys.Alpha0",
+		"body": ["Keys.Alpha0"],
+		"description": "Represents the keyboard's '0' number key (48)."
+	},
+	"Keys.Alpha1": {
+		"prefix": "Keys.Alpha1",
+		"body": ["Keys.Alpha1"],
+		"description": "Represents the keyboard's '1' number key (49)."
+	},
+	"Keys.Alpha2": {
+		"prefix": "Keys.Alpha2",
+		"body": ["Keys.Alpha2"],
+		"description": "Represents the keyboard's '2' number key (50)."
+	},
+	"Keys.Alpha3": {
+		"prefix": "Keys.Alpha3",
+		"body": ["Keys.Alpha3"],
+		"description": "Represents the keyboard's '3' number key (51)."
+	},
+	"Keys.Alpha4": {
+		"prefix": "Keys.Alpha4",
+		"body": ["Keys.Alpha4"],
+		"description": "Represents the keyboard's '4' number key (52)."
+	},
+	"Keys.Alpha5": {
+		"prefix": "Keys.Alpha5",
+		"body": ["Keys.Alpha5"],
+		"description": "Represents the keyboard's '5' number key (53)."
+	},
+	"Keys.Alpha6": {
+		"prefix": "Keys.Alpha6",
+		"body": ["Keys.Alpha6"],
+		"description": "Represents the keyboard's '6' number key (54)."
+	},
+	"Keys.Alpha7": {
+		"prefix": "Keys.Alpha7",
+		"body": ["Keys.Alpha7"],
+		"description": "Represents the keyboard's '7' number key (55)."
+	},
+	"Keys.Alpha8": {
+		"prefix": "Keys.Alpha8",
+		"body": ["Keys.Alpha8"],
+		"description": "Represents the keyboard's '8' number key (56)."
+	},
+	"Keys.Alpha9": {
+		"prefix": "Keys.Alpha9",
+		"body": ["Keys.Alpha9"],
+		"description": "Represents the keyboard's '9' number key (57)."
+	},
+	"Keys.A": {
+		"prefix": "Keys.A",
+		"body": ["Keys.A"],
+		"description": "Represents the keyboard's 'A' key (65)."
+	},
+	"Keys.B": {
+		"prefix": "Keys.B",
+		"body": ["Keys.B"],
+		"description": "Represents the keyboard's 'B' key (66)."
+	},
+	"Keys.C": {
+		"prefix": "Keys.C",
+		"body": ["Keys.C"],
+		"description": "Represents the keyboard's 'C' key (67)."
+	},
+	"Keys.D": {
+		"prefix": "Keys.D",
+		"body": ["Keys.D"],
+		"description": "Represents the keyboard's 'D' key (68)."
+	},
+	"Keys.E": {
+		"prefix": "Keys.E",
+		"body": ["Keys.E"],
+		"description": "Represents the keyboard's 'E' key (69)."
+	},
+	"Keys.F": {
+		"prefix": "Keys.F",
+		"body": ["Keys.F"],
+		"description": "Represents the keyboard's 'F' key (70)."
+	},
+	"Keys.G": {
+		"prefix": "Keys.G",
+		"body": ["Keys.G"],
+		"description": "Represents the keyboard's 'G' key (71)."
+	},
+	"Keys.H": {
+		"prefix": "Keys.H",
+		"body": ["Keys.H"],
+		"description": "Represents the keyboard's 'H' key (72)."
+	},
+	"Keys.I": {
+		"prefix": "Keys.I",
+		"body": ["Keys.I"],
+		"description": "Represents the keyboard's 'I' key (73)."
+	},
+	"Keys.J": {
+		"prefix": "Keys.J",
+		"body": ["Keys.J"],
+		"description": "Represents the keyboard's 'J' key (74)."
+	},
+	"Keys.K": {
+		"prefix": "Keys.K",
+		"body": ["Keys.K"],
+		"description": "Represents the keyboard's 'K' key (75)."
+	},
+	"Keys.L": {
+		"prefix": "Keys.L",
+		"body": ["Keys.L"],
+		"description": "Represents the keyboard's 'L' key (76)."
+	},
+	"Keys.M": {
+		"prefix": "Keys.M",
+		"body": ["Keys.M"],
+		"description": "Represents the keyboard's 'M' key (77)."
+	},
+	"Keys.N": {
+		"prefix": "Keys.N",
+		"body": ["Keys.N"],
+		"description": "Represents the keyboard's 'N' key (78)."
+	},
+	"Keys.O": {
+		"prefix": "Keys.O",
+		"body": ["Keys.O"],
+		"description": "Represents the keyboard's 'O' key (79)."
+	},
+	"Keys.P": {
+		"prefix": "Keys.P",
+		"body": ["Keys.P"],
+		"description": "Represents the keyboard's 'P' key (80)."
+	},
+	"Keys.Q": {
+		"prefix": "Keys.Q",
+		"body": ["Keys.Q"],
+		"description": "Represents the keyboard's 'Q' key (81)."
+	},
+	"Keys.R": {
+		"prefix": "Keys.R",
+		"body": ["Keys.R"],
+		"description": "Represents the keyboard's 'R' key (82)."
+	},
+	"Keys.S": {
+		"prefix": "Keys.S",
+		"body": ["Keys.S"],
+		"description": "Represents the keyboard's 'S' key (83)."
+	},
+	"Keys.T": {
+		"prefix": "Keys.T",
+		"body": ["Keys.T"],
+		"description": "Represents the keyboard's 'T' key (84)."
+	},
+	"Keys.U": {
+		"prefix": "Keys.U",
+		"body": ["Keys.U"],
+		"description": "Represents the keyboard's 'U' key (85)."
+	},
+	"Keys.V": {
+		"prefix": "Keys.V",
+		"body": ["Keys.V"],
+		"description": "Represents the keyboard's 'V' key (86)."
+	},
+	"Keys.W": {
+		"prefix": "Keys.W",
+		"body": ["Keys.W"],
+		"description": "Represents the keyboard's 'W' key (87)."
+	},
+	"Keys.X": {
+		"prefix": "Keys.X",
+		"body": ["Keys.X"],
+		"description": "Represents the keyboard's 'X' key (88)."
+	},
+	"Keys.Y": {
+		"prefix": "Keys.Y",
+		"body": ["Keys.Y"],
+		"description": "Represents the keyboard's 'Y' key (89)."
+	},
+	"Keys.Z": {
+		"prefix": "Keys.Z",
+		"body": ["Keys.Z"],
+		"description": "Represents the keyboard's 'Z' key (90)."
+	},
+	"Keys.NumPad0": {
+		"prefix": "Keys.NumPad0",
+		"body": ["Keys.NumPad0"],
+		"description": "Represents the keyboard's '0' number pad key (96)."
+	},
+	"Keys.NumPad1": {
+		"prefix": "Keys.NumPad1",
+		"body": ["Keys.NumPad1"],
+		"description": "Represents the keyboard's '1' number pad key (97)."
+	},
+	"Keys.NumPad2": {
+		"prefix": "Keys.NumPad2",
+		"body": ["Keys.NumPad2"],
+		"description": "Represents the keyboard's '2' number pad key (98)."
+	},
+	"Keys.NumPad3": {
+		"prefix": "Keys.NumPad3",
+		"body": ["Keys.NumPad3"],
+		"description": "Represents the keyboard's '3' number pad key (99)."
+	},
+	"Keys.NumPad4": {
+		"prefix": "Keys.NumPad4",
+		"body": ["Keys.NumPad4"],
+		"description": "Represents the keyboard's '4' number pad key (100)."
+	},
+	"Keys.NumPad5": {
+		"prefix": "Keys.NumPad5",
+		"body": ["Keys.NumPad5"],
+		"description": "Represents the keyboard's '5' number pad key (101)."
+	},
+	"Keys.NumPad6": {
+		"prefix": "Keys.NumPad6",
+		"body": ["Keys.NumPad6"],
+		"description": "Represents the keyboard's '6' number pad key (102)."
+	},
+	"Keys.NumPad7": {
+		"prefix": "Keys.NumPad7",
+		"body": ["Keys.NumPad7"],
+		"description": "Represents the keyboard's '7' number pad key (103)."
+	},
+	"Keys.NumPad8": {
+		"prefix": "Keys.NumPad8",
+		"body": ["Keys.NumPad8"],
+		"description": "Represents the keyboard's '8' number pad key (104)."
+	},
+	"Keys.NumPad9": {
+		"prefix": "Keys.NumPad9",
+		"body": ["Keys.NumPad9"],
+		"description": "Represents the keyboard's '9' number pad key (105)."
+	},
+	"Keys.Multiply": {
+		"prefix": "Keys.Multiply",
+		"body": ["Keys.Multiply"],
+		"description": "Represents the keyboard's 'Multiply' key (106)."
+	},
+	"Keys.Add": {
+		"prefix": "Keys.Add",
+		"body": ["Keys.Add"],
+		"description": "Represents the keyboard's 'Add' key (107)."
+	},
+	"Keys.Separator": {
+		"prefix": "Keys.Separator",
+		"body": ["Keys.Separator"],
+		"description": "Represents the keyboard's 'Separator' key (108)."
+	},
+	"Keys.Subtract": {
+		"prefix": "Keys.Subtract",
+		"body": ["Keys.Subtract"],
+		"description": "Represents the keyboard's 'Subtract' key (109)."
+	},
+	"Keys.Decimal": {
+		"prefix": "Keys.Decimal",
+		"body": ["Keys.Decimal"],
+		"description": "Represents the keyboard's 'Decimal' key (110)."
+	},
+	"Keys.Divide": {
+		"prefix": "Keys.Divide",
+		"body": ["Keys.Divide"],
+		"description": "Represents the keyboard's 'Divide' key (111)."
+	},
+	"Keys.LeftShift": {
+		"prefix": "Keys.LeftShift",
+		"body": ["Keys.LeftShift"],
+		"description": "Represents the keyboard's 'Left Shift' key (160)."
+	},
+	"Keys.RightShift": {
+		"prefix": "Keys.RightShift",
+		"body": ["Keys.RightShift"],
+		"description": "Represents the keyboard's 'Right Shift' key (161)."
+	},
+	"Keys.LeftControl": {
+		"prefix": "Keys.LeftControl",
+		"body": ["Keys.LeftControl"],
+		"description": "Represents the keyboard's 'Left Control' key (162)."
+	},
+	"Keys.RightControl": {
+		"prefix": "Keys.RightControl",
+		"body": ["Keys.RightControl"],
+		"description": "Represents the keyboard's 'Right Control' key (163)."
+	},
+	"Keys.LeftAlt": {
+		"prefix": "Keys.LeftAlt",
+		"body": ["Keys.LeftAlt"],
+		"description": "Represents the keyboard's 'Left Alt' key (164)."
+	},
+	"Keys.RightAlt": {
+		"prefix": "Keys.RightAlt",
+		"body": ["Keys.RightAlt"],
+		"description": "Represents the keyboard's 'Right Alt' key (165)."
+	},
+	"Keys.Semicolon": {
+		"prefix": "Keys.Semicolon",
+		"body": ["Keys.Semicolon"],
+		"description": "Represents the keyboard's 'Semicolon' key (186)."
+	},
+	"Keys.Plus": {
+		"prefix": "Keys.Plus",
+		"body": ["Keys.Plus"],
+		"description": "Represents the keyboard's 'Plus' key (187)."
+	},
+	"Keys.Comma": {
+		"prefix": "Keys.Comma",
+		"body": ["Keys.Comma"],
+		"description": "Represents the keyboard's 'Comma' key (188)."
+	},
+	"Keys.Minus": {
+		"prefix": "Keys.Minus",
+		"body": ["Keys.Minus"],
+		"description": "Represents the keyboard's 'Minus' key (189)."
+	},
+	"Keys.Period": {
+		"prefix": "Keys.Period",
+		"body": ["Keys.Period"],
+		"description": "Represents the keyboard's 'Period' key (190)."
+	},
+	"Keys.Question": {
+		"prefix": "Keys.Question",
+		"body": ["Keys.Question"],
+		"description": "Represents the keyboard's 'Question' key (191)."
+	},
+	"Keys.Tilde": {
+		"prefix": "Keys.Tilde",
+		"body": ["Keys.Tilde"],
+		"description": "Represents the keyboard's 'Tilde' key (192)."
+	},
+	"Keys.OpenBrackets": {
+		"prefix": "Keys.OpenBrackets",
+		"body": ["Keys.OpenBrackets"],
+		"description": "Represents the keyboard's 'OpenBrackets' key (219)."
+	},
+	"Keys.Pipe": {
+		"prefix": "Keys.Pipe",
+		"body": ["Keys.Pipe"],
+		"description": "Represents the keyboard's 'Pipe' key (220)."
+	},
+	"Keys.CloseBrackets": {
+		"prefix": "Keys.CloseBrackets",
+		"body": ["Keys.CloseBrackets"],
+		"description": "Represents the keyboard's 'CloseBrackets' key (221)."
+	},
+	"Keys.Quotes": {
+		"prefix": "Keys.Quotes",
+		"body": ["Keys.Quotes"],
+		"description": "Represents the keyboard's 'Quotes' key (222)."
+	},
+	"Keys.Backslash": {
+		"prefix": "Keys.Backslash",
+		"body": ["Keys.Backslash"],
+		"description": "Represents the keyboard's 'Backslash' key (226)."
+	},
+	"Keys.OemClear": {
+		"prefix": "Keys.OemClear",
+		"body": ["Keys.OemClear"],
+		"description": "Represents the keyboard's 'Clear' key (254).",
+	  "type": "method",
+	  "rightLabel": "PV8 Key"
+	}
+}

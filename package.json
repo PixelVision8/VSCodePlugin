@@ -1,0 +1,94 @@
+{
+    "name": "pixel-vision-8",
+    "displayName": "Pixel Vision 8",
+    "version": "0.9.8",
+    "publisher": "PixelVision8",
+    "description": "Full API code-completion and debugger for making Pixel Vision 8 games in Lua.",
+    "author": {
+        "name": "Jesse Freeman",
+        "email": "makegames@pixelvision8.com"
+    },
+    "engines": {
+        "vscode": "^1.1.0",
+        "node": "^5.10.0"
+    },
+    "icon": "images/icon.png",
+    "categories": [
+        "Debuggers", "Snippets"
+    ],
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pixelvision8/pv8-vscode"
+    },
+    "bugs": {
+        "url": "https://github.com/pixelvision8/pv8-vscode/issues"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@types/es6-collections": "^0.5.29",
+        "@types/es6-promise": "0.0.32",
+        "@types/mocha": "^2.2.32",
+        "@types/node": "^6.0.39",
+        "typescript": "^2.0.2",
+        "mocha": "^3.0.2",
+        "vscode": "^0.11.18",
+        "vscode-debugadapter-testsupport": "^1.13.0"
+    },
+    "scripts": {
+        "prepublish": "node ./node_modules/typescript/bin/tsc -p ./src",
+        "compile": "node ./node_modules/typescript/bin/tsc -p ./src",
+        "watch": "node ./node_modules/typescript/bin/tsc -w -p ./src",
+        "test": "node ./node_modules/mocha/bin/mocha -u tdd ./out/tests/",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "main": "./out/extension",
+    "activationEvents": [
+        "onCommand:extension.getProgramName"
+    ],
+    "contributes": {
+        "snippets": [
+			{
+				"language": "lua",
+				"path": "./snippets.json"
+			}
+		],
+        "breakpoints": [
+            {
+                "language": "lua"
+            },
+            {
+                "language": "text"
+            }
+        ],
+        "debuggers": [
+            {
+                "type": "pv8-debug",
+                "label": "PV8 Debugger",
+				"debugServer": 1985,
+                "initialConfigurations": [
+                    {
+                        "name": "PV8 Debugger Attach",
+                        "type": "pv8-debug",
+                        "request": "attach",
+						"debugServer": 1985
+                    }
+                ],
+                "configurationAttributes": {
+                    "attach": {
+                        "required": [
+
+                        ],
+                        "properties": {
+                            "HELP": {
+                                "type": "string",
+                                "description": "",
+                                "default": ""
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}
