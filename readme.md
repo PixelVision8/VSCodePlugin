@@ -25,7 +25,7 @@ This is an extension to allow debugging of Lua scripts running inside Pixel Visi
 
 1) Open Pixel Vision 8's Workspace Folder (located in your computer's User directory)
 
-2) Create a new launch.json file at the root of the Workspace folder with the following:
+2) Create a new launch.json file in a `.VSCode` folder at the root of the Workspace directory with the following:
 
 ```
 {
@@ -44,14 +44,10 @@ This is an extension to allow debugging of Lua scripts running inside Pixel Visi
 
 3) Hold down the shift key while a game loads to begin the countdown for connecting the debugger.
 
-4) In VS Code, select Debug -> Moonsharp (chaneg this name) then switch back over to Pixel Vision 8
+4) In VS Code, select Debug -> PV8 Debugger then switch back over to Pixel Vision 8
 
 5) Once the debugger is connected, you should see a debug icon in the title bar
 
 6) When the game loads up, you should be able to trigger break points to inspect the code that is currently running. By default, the debugger will break on Init().
 
 7) Type !scripts to display all of the script files that are currently loaded
-
-
-
-
