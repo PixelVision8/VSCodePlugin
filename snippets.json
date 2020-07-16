@@ -538,54 +538,54 @@
 		"body": ["Keys.Delete"],
 		"description": "Represents the keyboard's 'Delete' key (46)."
 	},
-	"Keys.Alpha0": {
-		"prefix": "Keys.Alpha0",
-		"body": ["Keys.Alpha0"],
+	"Keys.D0": {
+		"prefix": "Keys.D0",
+		"body": ["Keys.D0"],
 		"description": "Represents the keyboard's '0' number key (48)."
 	},
-	"Keys.Alpha1": {
-		"prefix": "Keys.Alpha1",
-		"body": ["Keys.Alpha1"],
+	"Keys.D1": {
+		"prefix": "Keys.D1",
+		"body": ["Keys.D1"],
 		"description": "Represents the keyboard's '1' number key (49)."
 	},
-	"Keys.Alpha2": {
-		"prefix": "Keys.Alpha2",
-		"body": ["Keys.Alpha2"],
+	"Keys.D2": {
+		"prefix": "Keys.D2",
+		"body": ["Keys.D2"],
 		"description": "Represents the keyboard's '2' number key (50)."
 	},
-	"Keys.Alpha3": {
-		"prefix": "Keys.Alpha3",
-		"body": ["Keys.Alpha3"],
+	"Keys.D3": {
+		"prefix": "Keys.D3",
+		"body": ["Keys.D3"],
 		"description": "Represents the keyboard's '3' number key (51)."
 	},
-	"Keys.Alpha4": {
-		"prefix": "Keys.Alpha4",
-		"body": ["Keys.Alpha4"],
+	"Keys.D4": {
+		"prefix": "Keys.D4",
+		"body": ["Keys.D4"],
 		"description": "Represents the keyboard's '4' number key (52)."
 	},
-	"Keys.Alpha5": {
-		"prefix": "Keys.Alpha5",
-		"body": ["Keys.Alpha5"],
+	"Keys.D5": {
+		"prefix": "Keys.D5",
+		"body": ["Keys.D5"],
 		"description": "Represents the keyboard's '5' number key (53)."
 	},
-	"Keys.Alpha6": {
-		"prefix": "Keys.Alpha6",
-		"body": ["Keys.Alpha6"],
+	"Keys.D6": {
+		"prefix": "Keys.D6",
+		"body": ["Keys.D6"],
 		"description": "Represents the keyboard's '6' number key (54)."
 	},
-	"Keys.Alpha7": {
-		"prefix": "Keys.Alpha7",
-		"body": ["Keys.Alpha7"],
+	"Keys.D7": {
+		"prefix": "Keys.D7",
+		"body": ["Keys.D7"],
 		"description": "Represents the keyboard's '7' number key (55)."
 	},
-	"Keys.Alpha8": {
-		"prefix": "Keys.Alpha8",
-		"body": ["Keys.Alpha8"],
+	"Keys.D8": {
+		"prefix": "Keys.D8",
+		"body": ["Keys.D8"],
 		"description": "Represents the keyboard's '8' number key (56)."
 	},
-	"Keys.Alpha9": {
-		"prefix": "Keys.Alpha9",
-		"body": ["Keys.Alpha9"],
+	"Keys.D9": {
+		"prefix": "Keys.D9",
+		"body": ["Keys.D9"],
 		"description": "Represents the keyboard's '9' number key (57)."
 	},
 	"Keys.A": {
@@ -828,64 +828,64 @@
 		"body": ["Keys.RightAlt"],
 		"description": "Represents the keyboard's 'Right Alt' key (165)."
 	},
-	"Keys.Semicolon": {
-		"prefix": "Keys.Semicolon",
-		"body": ["Keys.Semicolon"],
+	"Keys.OemSemicolo": {
+		"prefix": "Keys.OemSemicolo",
+		"body": ["Keys.OemSemicolo"],
 		"description": "Represents the keyboard's 'Semicolon' key (186)."
 	},
-	"Keys.Plus": {
-		"prefix": "Keys.Plus",
-		"body": ["Keys.Plus"],
+	"Keys.OemPlus": {
+		"prefix": "Keys.OemPlus",
+		"body": ["Keys.OemPlus"],
 		"description": "Represents the keyboard's 'Plus' key (187)."
 	},
-	"Keys.Comma": {
-		"prefix": "Keys.Comma",
-		"body": ["Keys.Comma"],
+	"Keys.OemComma": {
+		"prefix": "Keys.OemComma",
+		"body": ["Keys.OemComma"],
 		"description": "Represents the keyboard's 'Comma' key (188)."
 	},
-	"Keys.Minus": {
-		"prefix": "Keys.Minus",
-		"body": ["Keys.Minus"],
+	"Keys.OemMinus": {
+		"prefix": "Keys.OemMinus",
+		"body": ["Keys.OemMinus"],
 		"description": "Represents the keyboard's 'Minus' key (189)."
 	},
-	"Keys.Period": {
-		"prefix": "Keys.Period",
-		"body": ["Keys.Period"],
+	"Keys.OemPeriod": {
+		"prefix": "Keys.OemPeriod",
+		"body": ["Keys.OemPeriod"],
 		"description": "Represents the keyboard's 'Period' key (190)."
 	},
-	"Keys.Question": {
-		"prefix": "Keys.Question",
-		"body": ["Keys.Question"],
+	"Keys.OemQuestion": {
+		"prefix": "Keys.OemQuestion",
+		"body": ["Keys.OemQuestion"],
 		"description": "Represents the keyboard's 'Question' key (191)."
 	},
-	"Keys.Tilde": {
-		"prefix": "Keys.Tilde",
-		"body": ["Keys.Tilde"],
+	"Keys.OemTilde": {
+		"prefix": "Keys.OemTilde",
+		"body": ["Keys.OemTilde"],
 		"description": "Represents the keyboard's 'Tilde' key (192)."
 	},
-	"Keys.OpenBrackets": {
-		"prefix": "Keys.OpenBrackets",
-		"body": ["Keys.OpenBrackets"],
+	"Keys.OemOpenBrackets": {
+		"prefix": "Keys.OemOpenBrackets",
+		"body": ["Keys.OemOpenBrackets"],
 		"description": "Represents the keyboard's 'OpenBrackets' key (219)."
 	},
-	"Keys.Pipe": {
-		"prefix": "Keys.Pipe",
-		"body": ["Keys.Pipe"],
+	"Keys.OemPipe": {
+		"prefix": "Keys.OemPipe",
+		"body": ["Keys.OemPipe"],
 		"description": "Represents the keyboard's 'Pipe' key (220)."
 	},
-	"Keys.CloseBrackets": {
-		"prefix": "Keys.CloseBrackets",
-		"body": ["Keys.CloseBrackets"],
+	"Keys.OemCloseBrackets": {
+		"prefix": "Keys.OemCloseBrackets",
+		"body": ["Keys.OemCloseBrackets"],
 		"description": "Represents the keyboard's 'CloseBrackets' key (221)."
 	},
-	"Keys.Quotes": {
-		"prefix": "Keys.Quotes",
-		"body": ["Keys.Quotes"],
+	"Keys.OemQuotes": {
+		"prefix": "Keys.OemQuotes",
+		"body": ["Keys.OemQuotes"],
 		"description": "Represents the keyboard's 'Quotes' key (222)."
 	},
-	"Keys.Backslash": {
-		"prefix": "Keys.Backslash",
-		"body": ["Keys.Backslash"],
+	"Keys.OemBackslash": {
+		"prefix": "Keys.OemBackslash",
+		"body": ["Keys.OemBackslash"],
 		"description": "Represents the keyboard's 'Backslash' key (226)."
 	},
 	"Keys.OemClear": {
