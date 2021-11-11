@@ -1,9 +1,9 @@
 {
     "name": "pixel-vision-8",
     "displayName": "Pixel Vision 8",
-    "version": "0.9.8",
+    "version": "1.0.0",
     "publisher": "PixelVision8",
-    "description": "Full API code-completion and debugger for making Pixel Vision 8 games in Lua.",
+    "description": "Full API code-completion and debugger for making Pixel Vision 8 games in Lua and C#.",
     "author": {
         "name": "Jesse Freeman",
         "email": "makegames@pixelvision8.com"
@@ -51,6 +51,10 @@
 			{
 				"language": "lua",
 				"path": "./snippets.json"
+			},
+            {
+				"language": "csharp",
+				"path": "./snippets.json"
 			}
 		],
         "breakpoints": [
@@ -63,6 +67,7 @@
         ],
         "debuggers": [
             {
+                "language": "lua",
                 "type": "pv8-debug",
                 "label": "PV8 Debugger",
 				"debugServer": 1985,

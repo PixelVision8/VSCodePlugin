@@ -41,6 +41,12 @@
 		"description": "Converts an index into an X and Y position to help when working with 1D arrays that represent 2D data.",
 		"rightLabel": "PV8 Math"
 	},
+	"ChangeSizeMode": {
+		"prefix": "ChangeSizeMode",
+		"body": ["ChangeSizeMode( ${1:mode}, )$4"],
+		"description": "The ChangeSizeMode() API allows you to change the size of sprites at runtime. By default, sprites are 8 x 8 pixels but there are several different SpriteSizes you can choose from which alter the DrawSprite() API.",
+		"rightLabel": "PV8 Math"
+	},
 	"Clamp": {
 		"prefix": "Clamp",
 		"body": ["Clamp( ${1:val}, ${2:min}, ${3:max} )$4"],
@@ -115,16 +121,10 @@
 		"description": "The DrawSprite() API allows you to draw a single sprite to the display. Sprites represent individual collections of 8 x 8 blocks of pixel data. The display also has a limitation on how many sprites that can be on the screen at the same time. Each time you call DrawSprite(), the sprite counts against the total amount the display can render.",
 		"rightLabel": "PV8 Drawing"
 	},
-	"DrawSpriteBlock": {
-		"prefix": "DrawSpriteBlock",
-		"body": ["DrawSpriteBlock( ${1:id}, ${2:x}, ${3:y}, ${4:width}, ${5:height}, ${6:flipH}, ${7:flipV}, ${8:DrawMode}, ${9:colorOffset}, ${10:onScreen}, ${11:useScrollPos}, ${12:bounds} )$13"],
-		"description": "DrawSpriteBlock() is similar to DrawSprites except you define the first sprite (upper left corner) and the width x height (in sprites) to sample from sprite ram.",
-		"rightLabel": "PV8 Drawing"
-	},
-	"DrawSprites": {
-		"prefix": "DrawSprites",
-		"body": ["DrawSprites( ${1:ids}, ${2:x}, ${3:y}, ${4:width}, ${5:flipH}, ${6:flipV}, ${7:DrawMode}, ${8:colorOffset}, ${9:onScreen}, ${10:useScrollPos}, ${11:bounds} )$12"],
-		"description": "The DrawSprites() API makes it easier to draw a group of sprites to the display. Unlike the DrawSpriteBlock() API, you define the exact sprites you want to be drawn. While there is no limit on the size of the sprite group which can be rendered, it is important to note that each ID in the array still counts as an individual sprite.",
+	"DrawMetaSprite": {
+		"prefix": "DrawMetaSprite",
+		"body": ["DrawMetaSprite( ${1:identifier}, ${2:x}, ${3:y}, ${4:flipH}, ${5:flipV}, ${6:DrawMode}, ${7:colorOffset} )$8"],
+		"description": "The DrawMetaSprite() API allows you to draw a Sprite Collection to the display. You can supply an id, name, or Sprite Collection as the identifier to render the Meta Sprite to the display.",
 		"rightLabel": "PV8 Drawing"
 	},
 	"DrawText": {
@@ -144,6 +144,12 @@
 		"body": ["Flag( ${1:column}, ${2:row}, ${3:value} )$4"],
 		"description": "The Flag() API allows you to quickly access just the flag value of a tile. This is useful when trying to calculate collision on the tilemap. By default, you can call this method with just a column and row position to return the flag value at that tile. If you supply a new value, it will be overridden on the tile.",
 		"rightLabel": "PV8 Tilemap"
+	},
+	"FindMetaSpriteId": {
+		"prefix": "FindMetaSpriteId",
+		"body": ["FindMetaSpriteId( ${1:name} )$2"],
+		"description": "This API allows you to find a Meta Sprite's Id from it's name. This can be used in conjunction with DrawMetaSprite to avoid the overhead of searching for a MetaSprite by its name when drawing to the display.",
+		"rightLabel": "PV8 Meta Sprites"
 	},
 	"InputString": {
 		"prefix": "InputString",
@@ -168,6 +174,12 @@
 		"body": ["MaxSpriteCount( ${1:total} )$2"],
 		"description": " This method returns the maximum number of sprites the Display Chip can render in a single frame. Use this to better understand the limitations of the hardware your game is running on. This is a read only property at runtime. ",
 		"rightLabel": "PV8 Sprites"
+	},
+	"MetaSprite": {
+		"prefix": "MetaSprite",
+		"body": ["MetaSprite( ${1:name}, ${2:spriteCollection} )$3"],
+		"description": "A meta sprite is a collection of sprite data you can treat as a single larger sprite. This API returns the actual Sprite Collection that makes up an indevidual Meta Sprite and accepts an int or string to locate the collection. Supplying an option Sprite Collection will overwrite the existing Meta Sprite with new spite data from the collection.",
+		"rightLabel": "PV8 Meta Sprites"
 	},
 	"MouseButton": {
 		"prefix": "MouseButton",
@@ -197,7 +209,25 @@
 		"prefix": "NewCanvas",
 		"body": ["NewCanvas( ${1:w}, ${2:h} )$3"],
 		"description": "The canvas is a special TextureData derivative that supports drawing primitive shapes such as lines, circles, and rectangles. You can also draw sprites and text to it as well. When you are done drawing on the canvas, you can copy the pixel data into the SpriteChip or directly to the tilemap cache. While the canvas allows run-time drawing, it’s not part of the core Pixel Vision 8 API.",
-		"rightLabel": "PV8 Geometry"
+		"rightLabel": "PV8 Canvas"
+	},
+	"NewSpriteData": {
+		"prefix": "NewSpriteData",
+		"body": ["NewSpriteData( ${1:id}, ${2:x}, ${3:y}, ${4:flipH}, ${5:flipV}, ${6:colorOffset} )$7"],
+		"description": "Sprite Data represents a single sprite that makes up part of a larger collection of sprites that define a single meta sprite. It allows you to define the sprite Id, x, y, flip, and color offset for that individual sprite.",
+		"rightLabel": "PV8 Meta Sprites"
+	},
+	"NewMetaSprite": {
+		"prefix": "NewMetaSprite",
+		"body": ["NewSpriteData( ${1:id}, ${2:name}, ${3:spriteIds}, ${4:columns}, ${5:height}, ${6:colorOffset} )$7"],
+		"description": "A meta sprite is a collection of sprite data you can treat as a single larger sprite. This API helps to quickly create MetaSprites from a collection of sprite Ids in a grid which is define by the width and height values.",
+		"rightLabel": "PV8 Meta Sprites"
+	},
+	"NewSpriteCollection": {
+		"prefix": "NewSpriteCollection",
+		"body": ["NewSpriteCollection( ${1:name}, ${2:sprites} )$3"],
+		"description": "A sprite collection contains multiple sprites each with their own unique position, orientation, and color offset. Collectively, these sprites represent a single larger 'meta sprite' you can draw to the display in a single shot.",
+		"rightLabel": "PV8 Meta Sprites"
 	},
 	"PaletteOffset": {
 		"prefix": "PaletteOffset",
@@ -235,11 +265,23 @@
 		"description": "The ReadMetadata() API allows you to read the metadata that is passed into the game when it loads. This is used by the Pixel Vision 8 Runner to pass data between load sessions.",
 		"rightLabel": "PV8 File IO"
 	},
+	"ReadFPS": {
+		"prefix": "ReadFPS",
+		"body": ["ReadFPS()$1"],
+		"description": "The ReadFPS() API allows see the engine's current FPS counter which is updated on the previous frame.",
+		"rightLabel": "PV8 Debug"
+	},
 	"ReadSaveData": {
 		"prefix": "ReadSaveData",
 		"body": ["ReadSaveData( ${1:key}, ${2:defaultValue} )$3"],
 		"description": "The ReadSaveData() API allows you to read saved data by supplying a key. If no matching key exists, \"undefined\" is returned.",
 		"rightLabel": "PV8 File IO"
+	},
+	"ReadTotalSprites": {
+		"prefix": "ReadTotalSprites",
+		"body": ["ReadTotalSprites()$1"],
+		"description": "The ReadTotalSprites() API allows see the engine's current sprite count which is updated previous frame.",
+		"rightLabel": "PV8 Debug"
 	},
 	"RebuildTilemap": {
 		"prefix": "RebuildTilemap",
@@ -350,6 +392,12 @@
 		"description": "The TotalSprites() API returns the total number of sprites in the SpriteChip. By supplying true for the ignoreEmpty parameter, it will only return sprites that contain pixel data.",
 		"rightLabel": "PV8 Sprites"
 	},
+	"TotalMetaSprites": {
+		"prefix": "TotalMetaSprites",
+		"body": ["TotalMetaSprites( ${1:total} )$2"],
+		"description": "The TotalMetaSprites() API returns the total number of meta sprites stored the GameChip. By supplying an option value, you can change the total number of Meta Sprites that can be stored in memory.",
+		"rightLabel": "PV8 Meta Sprites"
+	},
 	"Update": {
 		"prefix": "Update",
 		"body": ["Update( timeDelta )$0"],
@@ -374,6 +422,36 @@
 		"body": ["WriteSaveData( ${1:key}, ${2:value} )$3"],
 		"description": "The WriteSaveData() API allows you to write saved data by supplying a key and value. Once saved, this data persists even after restarting a game.",
 		"rightLabel": "PV8 File IO"
+	},
+	"SpriteSizes.Mode1": {
+		"prefix": "SpriteSizes.Mode1",
+		"body": ["SpriteSizes.Mode1"],
+		"description": "Changes sprites to 8 x 8 pixels.",
+		"rightLabel": "PV8 Size Mode"
+	},
+	"SpriteSizes.Mode2": {
+		"prefix": "SpriteSizes.Mode2",
+		"body": ["SpriteSizes.Mode2"],
+		"description": "Changes sprites to 8 x 16 pixels.",
+		"rightLabel": "PV8 Size Mode"
+	},
+	"SpriteSizes.Mode3": {
+		"prefix": "SpriteSizes.Mode3",
+		"body": ["SpriteSizes.Mode3"],
+		"description": "Changes sprites to 16 x 8 pixels.",
+		"rightLabel": "PV8 Size Mode"
+	},
+	"SpriteSizes.Mode4": {
+		"prefix": "SpriteSizes.Mode4",
+		"body": ["SpriteSizes.Mode4"],
+		"description": "Changes sprites to 16 x 16 pixels.",
+		"rightLabel": "PV8 Size Mode"
+	},
+	"SpriteSizes.Mode5": {
+		"prefix": "SpriteSizes.Mode5",
+		"body": ["SpriteSizes.Mode5"],
+		"description": "Changes sprites to 32 x 32 pixels.",
+		"rightLabel": "PV8 Size Mode"
 	},
 	"DrawMode.TilemapCache": {
 		"prefix": "DrawMode.TilemapCache",
