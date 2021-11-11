@@ -1,7 +1,7 @@
 {
     "name": "pixel-vision-8",
     "displayName": "Pixel Vision 8",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "publisher": "PixelVision8",
     "description": "Full API code-completion and debugger for making Pixel Vision 8 games in Lua and C#.",
     "author": {
